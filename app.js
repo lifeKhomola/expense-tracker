@@ -41,6 +41,8 @@ function displayTable() {
                 <th>${transactions[i].type}</th>
                 <th>${transactions[i].detail}</th>
                 <th>${parseInt(transactions[i].amount)}</th>
+                
+                
             </tr>
         `;
   }
@@ -74,7 +76,15 @@ function getResults () {
    let expense1 =JSON.parse(localStorage.getItem("expense"));
    incomeTotal.innerHTML = income1;
    expenseTotal.innerHTML = expense1;
-   amountTotal.innerHTML = income1 - expense1;
+   //expenseTotal.innerHTML = expense1;
+   if( expense1 > income1)
+   {
+     alert("something went wrong")
+   }else if(expense1 < income1) {
+    
+    amountTotal.innerHTML = income1 - expense1;
+   }
+   
   
    
 
@@ -88,8 +98,8 @@ function calc(type) {
   if (!isValid()) return;
   
 
-  
-  // localStorage.setItem('transactions', JSON.stringify([{type, detail, amount}]));
+  // transactions.push({type, detail, amount});
+  //localStorage.setItem('transactions', JSON.stringify([{type, detail, amount}]));
   let transactions = localStorage.getItem('transactions') && JSON.parse(localStorage.getItem('transactions'));
   
   if(transactions) {
@@ -132,6 +142,12 @@ function resetTableData(){
   amountTotal.innerHTML = parseInt(JSON.parse(localStorage.getItem('income'))) - parseInt(JSON.parse(localStorage.getItem('expense')));
 
 })();
+function SomeDeleteRowFunction() {
+  // event.target will be the input element.
+  var td = event.target.parentNode; 
+  var tr = td.parentNode; // the row to be removed
+  tr.parentNode.removeChild(tr);
+}
 
 
 
