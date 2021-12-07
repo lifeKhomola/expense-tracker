@@ -1,5 +1,13 @@
 let detail;
 let amount;
+//clear the forms after adding 
+function myFunction() {
+  
+  document.getElementById("detail").value = '';
+  document.getElementById("amount").value = '';
+  
+}
+
 
 // holds all transactions
 let transactions = [];
@@ -61,6 +69,7 @@ function getResults () {
    incomeTotal.innerHTML = income;
    expenseTotal.innerHTML = expense;
    amountTotal.innerHTML = income - expense;
+ 
 }
 
 
@@ -72,6 +81,8 @@ function calc(type) {
   transactions.push({ type, detail, amount })
   getResults();
   displayTable();
+  myFunction();
+  
 }
 
 
