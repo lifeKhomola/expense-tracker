@@ -80,7 +80,6 @@ function getResults () {
    let expense1 =JSON.parse(localStorage.getItem("expense"));
    incomeTotal.innerHTML = income1;
    expenseTotal.innerHTML = expense1;
-   //expenseTotal.innerHTML = expense1;
     amountTotal.innerHTML = income - expense;
    }
    
