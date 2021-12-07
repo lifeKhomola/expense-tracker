@@ -55,6 +55,7 @@ function getResults () {
     let income = 0;
     let expense = 0;
     let amount = 0;
+    let transactions = JSON.parse(localStorage.getItem('transactions'));
 
    for (let i = 0; i < transactions.length; i++) {
 
@@ -87,9 +88,16 @@ function calc(type) {
   if (!isValid()) return;
   
 
-  //transactions.push({ type, detail, amount })
-  localStorage.setItem('transactions', JSON.stringify([{type, detail, amount}]));
-
+  
+  // localStorage.setItem('transactions', JSON.stringify([{type, detail, amount}]));
+  let transactions = localStorage.getItem('transactions') && JSON.parse(localStorage.getItem('transactions'));
+  
+  if(transactions) {
+    transactions = JSON.stringify([...JSON.parse(localStorage.getItem('transactions')), {type, detail, amount}]);
+    localStorage.setItem('transactions', transactions);
+  } else {
+    localStorage.setItem('transactions', JSON.stringify([{type, detail, amount}]));
+  }
   getResults();
   displayTable();
   myFunction();
