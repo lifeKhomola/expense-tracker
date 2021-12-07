@@ -76,16 +76,15 @@ function getResults () {
    {
      alert("something went wrong")
    }else if(expense < income) {
-    
-    amountTotal.innerHTML = income - expense;
-   }
-   let income1 = JSON.parse(localStorage.getItem("income"));
+    let income1 = JSON.parse(localStorage.getItem("income"));
    let expense1 =JSON.parse(localStorage.getItem("expense"));
    incomeTotal.innerHTML = income1;
    expenseTotal.innerHTML = expense1;
    //expenseTotal.innerHTML = expense1;
+    amountTotal.innerHTML = income - expense;
+   }
    
-   
+  
 
 }
 
